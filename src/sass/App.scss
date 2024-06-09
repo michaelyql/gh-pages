@@ -1,0 +1,18 @@
+@use "./variables" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media screen and (max-height: $medium_device_width) {
+  .App {
+  }
+}

@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
+import LandingPage from "./LandingPage";
+import Layout from "./Layout";
+import Posts from "./components/Posts";
+import "./sass/App.scss";
+
+const InnerRoutes = () => {
+  return (
+    <>
+      <Routes>
+        {/* Every page will have header and footer in layout */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<LandingPage />} />
+          <Route path="/posts/*" element={<Posts />} />
+          <Route path="*" element={<ErrorPage />} />
+          {/* Catch-all error page */}
+        </Route>
+      </Routes>
+    </>
+  );
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <InnerRoutes />
+    </BrowserRouter>
   );
 }
 

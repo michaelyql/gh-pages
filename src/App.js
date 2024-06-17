@@ -1,31 +1,47 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ErrorPage from "./ErrorPage";
-import LandingPage from "./LandingPage";
-import Layout from "./Layout";
-import Posts from "./components/Posts";
+import Prism from "prismjs";
+// cpp depends on clike, which depends on c, so all have to be imported
+import "prismjs/components/prism-c";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-cpp";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-python";
+import "prismjs/themes/prism-tomorrow.css";
+import { createContext, useMemo } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import BlogHome from "./components/blog/BlogHome";
+import BlogLayout from "./components/blog/BlogLayout";
+import LandingPage from "./components/LandingPage";
+import Post from "./components/post/Post";
+import Posts from "./components/post/Posts";
 import "./sass/App.scss";
 
-const InnerRoutes = () => {
-  return (
-    <>
-      <Routes>
-        {/* Every page will have header and footer in layout */}
-        <Route path="/" element={<Layout />}>
-          <Route index element={<LandingPage />} />
-          <Route path="/posts/*" element={<Posts />} />
-          <Route path="*" element={<ErrorPage />} />
-          {/* Catch-all error page */}
-        </Route>
-      </Routes>
-    </>
-  );
-};
+Prism.disableWorkerMessageHandler = false;
+
+export const PostContext = createContext(null);
 
 function App() {
+  const posts = useMemo(() => {
+    return require
+      .context("./posts", false, /\.md$/)
+      .keys()
+      .map((filename) => `${filename.substring(2)}`);
+  }, []);
+
   return (
-    <BrowserRouter>
-      <InnerRoutes />
-    </BrowserRouter>
+    <PostContext.Provider value={posts}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/blog" element={<BlogLayout />}>
+            <Route index element={<BlogHome />} />
+            <Route path="posts" element={<Posts />} />
+            <Route path="posts/:id" element={<Post />} />
+            <Route path="*" element={<Navigate to="." />} />
+          </Route>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </BrowserRouter>
+    </PostContext.Provider>
   );
 }
 

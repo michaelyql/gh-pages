@@ -3,7 +3,7 @@ const LandingPage = (props) => {
   return (
     <>
       <h1>Landing Page Content</h1>
-      <Link to="posts">Link to posts</Link>
+      <Link to="/blog">Link to blog</Link>
     </>
   );
 };

@@ -1,4 +1,8 @@
 @use "./variables" as *;
+@use "./blog";
+@use "./pre";
+@use "./post";
+@use "./link";
 
 * {
   box-sizing: border-box;
@@ -12,7 +16,6 @@
   flex-direction: column;
 }
 
-@media screen and (max-height: $medium_device_width) {
-  .App {
-  }
+body {
+  background-color: #fff8ef;
 }

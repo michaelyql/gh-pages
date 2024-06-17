@@ -1,0 +1,20 @@
+@use "./variables" as *;
+
+pre[class*="language-"] {
+  width: 100%;
+  border-radius: 8px;
+  font-size: 14px !important;
+  margin-bottom: 16px;
+  margin-top: 8px;
+
+  @media screen and (min-width: $device-md) {
+    margin-top: 16px;
+  }
+}
+
+// TODO
+// Include button on mobile devices to toggle line wrap
+// Override Prism's default settings to allow line wrap
+code[class*="language-"] {
+  white-space: pre-wrap;
+}

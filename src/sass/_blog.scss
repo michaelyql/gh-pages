@@ -1,0 +1,31 @@
+@use "./variables" as *;
+
+.blog-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(900px, 100%);
+  margin: auto;
+  padding: 8px;
+
+  @media (max-width: $device-md) {
+    padding: 16px;
+  }
+}
+
+.blog-header-wrapper {
+  width: 100%;
+  hr {
+    margin: 0;
+  }
+  .blog-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+.blog-footer {
+  margin-top: auto;
+}

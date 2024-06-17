@@ -1,0 +1,101 @@
+@use "./variables" as *;
+
+$inline-code-bg: #fef3f3;
+
+.post {
+  width: min(800px, 100%);
+  margin-top: 24px;
+  @media screen and (max-width: $device-md) {
+    margin-top: 8px;
+  }
+}
+
+.post-header {
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-weight: 600;
+  @media screen and (max-width: $device-md) {
+    gap: 4px;
+  }
+  h1 {
+    margin-bottom: 0px;
+    @media screen and (max-width: $device-md) {
+      font-size: 28px;
+    }
+  }
+  h3 {
+    color: var(--theme1-gray);
+    font-weight: 300;
+    font-size: 24px;
+    margin-bottom: 8px;
+    @media screen and (max-width: $device-md) {
+      margin-bottom: 4px;
+      font-size: 20px;
+    }
+  }
+}
+
+.post-tags {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  span {
+    // Badge pills
+    background-color: var(--theme1-accent) !important;
+    font-weight: 500;
+  }
+}
+
+.post-body {
+  h2 {
+    margin-top: 16px;
+    margin-bottom: 4px;
+  }
+  // Text
+  p {
+    margin-bottom: 8px;
+    word-break: break-word;
+  }
+  // Inline Code
+  p code,
+  li code {
+    display: inline-block; // Prevent breaking by individual tokens and break by the entire inline chunk instead
+    color: var(--theme1-code);
+    background-color: $inline-code-bg;
+    border: 1px solid var(--theme1-gray);
+    border-radius: 5px;
+    padding: 2px 6px;
+    margin: 2px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  ul {
+    padding-left: 16px;
+    li {
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.post-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  margin-top: 24px;
+  .post-prev,
+  .post-next {
+    padding: 8px 8px;
+
+    a {
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}

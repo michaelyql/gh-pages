@@ -1,5 +1,6 @@
 # TO DO
 
+- Fix gh pages
 - Progress bar + Table of contents for post page
 - Posts design
 - Include button for code on mobile devices to toggle on/off line wrapping
@@ -17,3 +18,28 @@
 - Mouse bg parallax (see Merci Michel) using canvas threejs
 - Low poly resolution image (the Thinker)
 - Industry UI mockups
+
+## Content Layout
+
+---
+
+Algorithms and Data Structures
+Image assets: trees, nodes, linked lists etc.
+My own attempt to explain and simplify the concepts
+
+---
+
+CP, Leetcode, CF Questions
+Techy / nerdy vibe, ide
+Read more about questions and solutions here
+
+---
+
+Frontend Libraries, Design, Frameworks
+image assets: react, ts, mui
+Tips and tricks on how to write frontend code
+
+---
+
+Personal blog, projects, and others
+My own exploration of ideas

@@ -12,25 +12,37 @@ tags:
 
 Given an array A of size **N**, and given **Q** queries where each query wants to find the minimum element in the range **[l, r]**, find an efficient way to process all the queries.
 
+<br>
+
 ### Brute Force:
 
 Time Complexity: O(Q\*N)
+
+<br>
 
 ### Dense Table
 
 Calculate every possible interval: O(N^2 + Q)
 
+<br>
+
 ### Sparse Table
 
 We don't need to calculate every interval, just a few of them (logarithmic in number).
 
-<u>Approach</u>: Maintain a 2D array `int m[][]` where `m[i][j]` represents the minimum element of the range `[i, i + (1 << j)]`, i.e. the range (inclusive) starting at `i` with a length of 2 to the power of `j`. For example, `m[1][2]` will store the minimum value in the range `[1, 5]`. With this, we are able to find the minimum value in any range in O(1) time. <hr />
+<br>
+
+<u>Approach</u>: Maintain a 2D array `int m[][]` where `m[i][j]` represents the minimum element of the range `[i, i + (1 << j)]`, i.e. the range (inclusive) starting at `i` with a length of 2 to the power of `j`. For example, `m[1][2]` will store the minimum value in the range `[1, 5]`. With this, we are able to find the minimum value in any range in O(1) time.
+
+<br>
 
 The approach is essentially to calculate all ranges of size `1 << i` for `i <= log2(n)`. If the length of the query is not a perfect power of 2, we take the **next closest power of 2** and we consider ranges of those lengths.
 
-We need only consider the ranges from the **start** of the index, and from the **end, backwards**.
+<br>
 
-This is because the length of range we are scanning would cover more than half of the query range (either from the start or backwards from the end), but not enough to cover the entire query range.
+We need only consider the ranges from the **start** of the index, and from the **end, backwards**. This is because the length of range we are scanning would cover more than half of the query range (either from the start or backwards from the end), but not enough to cover the entire query range.
+
+<br>
 
 ### Example
 
@@ -54,9 +66,13 @@ int query(int L, int R) {
 }
 ```
 
+<br>
+
 ## Related Problems
 
 text
+
+<br>
 
 ## Resources
 

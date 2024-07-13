@@ -1,10 +1,9 @@
 import { Outlet } from "react-router-dom";
-import BlogHeader from "./BlogHeader";
 
 const BlogLayout = () => {
   return (
     <>
-      <BlogHeader />
+      {/* <BlogHeader /> */}
       <div className="blog-layout">
         <Outlet />
       </div>

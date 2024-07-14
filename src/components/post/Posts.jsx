@@ -1,34 +1,88 @@
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  Divider,
+  Skeleton,
+  Typography,
+} from "@mui/material";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PostContext } from "../../App";
+import imageMap from "../../assets/Images";
+import { formatDate } from "./PostHeader";
 
-function capitalizeFirstLetter(str) {
-  return str
-    .split(" ")
-    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-    .join(" ");
-}
+const categoryMapping = {
+  cp: "Competitive Programming",
+  ds: "Data Structures & Algorithms",
+  spring: "Frameworks",
+};
 
 const Posts = () => {
   const posts = useContext(PostContext);
+  const expandCategoryName = (category) => {
+    return categoryMapping[category];
+  };
+
+  const getBackgroundImageForCategory = (category) => {
+    if (imageMap[category] !== undefined) {
+      return imageMap[category];
+    }
+    return "";
+  };
+
+  if (posts.length === 0)
+    return <Skeleton variant="rounded" width="100%" height={200} />;
 
   return (
     <>
       <h1>Posts</h1>
-      <ul>
+      <div
+        className={`posts-container d-flex flex-wrap flex-md-row flex-sm-column align-items-center justify-content-center`}
+      >
         {posts.map((post, idx) => {
-          const postName = post.replace(/-/g, " ").replace(/\.md$/, "");
-          const formattedPostName = capitalizeFirstLetter(postName);
+          const { filename, data } = post;
           return (
-            <li key={idx}>
-              <Link to={`${idx + 1}`}>
-                {formattedPostName}
-                <br />
-              </Link>
-            </li>
+            <Card className={`post-card`} key={idx} sx={{ margin: "4px" }}>
+              <CardActionArea>
+                <Link to={`${idx + 1}`}>
+                  <div className="d-flex flex-row align-items-center justify-content-between">
+                    <CardContent>
+                      <Typography variant="caption" sx={{ color: "#808080" }}>
+                        {formatDate(data.date)}
+                      </Typography>
+                      <Typography
+                        variant="subtitle1"
+                        className="mb-2"
+                        sx={{ fontWeight: 400, fontSize: "1.25rem" }}
+                      >
+                        {filename}
+                      </Typography>
+
+                      {data.category &&
+                      categoryMapping[data.category] !== undefined ? (
+                        <>
+                          <Divider />
+                          <Typography variant="caption">
+                            {expandCategoryName(data.category)}
+                          </Typography>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </CardContent>
+                    <img
+                      className="card-bg me-4"
+                      src={getBackgroundImageForCategory(data.category)}
+                      alt=""
+                    />
+                  </div>
+                </Link>
+              </CardActionArea>
+            </Card>
           );
         })}
-      </ul>
+      </div>
     </>
   );
 };

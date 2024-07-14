@@ -99,3 +99,29 @@ $inline-code-bg: #fef3f3;
     }
   }
 }
+
+.post-card {
+  width: 40%;
+  @media screen and (max-width: $device-md) {
+    width: 100%;
+  }
+  background: rgb(243, 249, 255);
+  background: radial-gradient(
+    circle,
+    rgba(243, 249, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 32%,
+    rgba(255, 255, 255, 1) 83%
+  );
+  a {
+    color: var(--theme1-text);
+    &:hover {
+      color: var(--theme1-text);
+    }
+  }
+  .badge {
+    font-weight: 400;
+  }
+  .card-bg {
+    height: 64px;
+  }
+}

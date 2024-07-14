@@ -8,7 +8,6 @@ const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const customizeOutput = () => (config) => {
-  config.entry = "./src/index.js";
   config.context = path.resolve(__dirname);
   config.output = {
     ...config.output,
@@ -33,11 +32,19 @@ module.exports = override(
   addWebpackModuleRule({
     test: /\.scss$/,
     use: [
-      MiniCssExtractPlugin.loader,
+      // MiniCssExtractPlugin.loader,
       "style-loader",
       "css-loader",
       "sass-loader",
     ],
+  }),
+  addWebpackModuleRule({
+    test: /\.(png|jpe?g|gif|svg)$/i,
+    loader: "file-loader",
+    options: {
+      name: "[path][name].[ext]",
+      outputPath: "images",
+    },
   }),
   customizeOutput()
 );

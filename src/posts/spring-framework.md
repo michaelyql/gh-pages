@@ -6,6 +6,7 @@ tags:
   - java
   - spring
   - j2ee
+category: spring
 ---
 
 spring container

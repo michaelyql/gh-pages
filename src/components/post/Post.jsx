@@ -1,5 +1,4 @@
 import { Buffer } from "buffer";
-import matter from "gray-matter";
 import Prism from "prismjs";
 import { useContext, useEffect, useState } from "react";
 import Markdown from "react-markdown";
@@ -27,24 +26,16 @@ const Post = () => {
     // Dynamic imports
     // See this webpage for an example https://my-blog-tutorials.netlify.app/
     // Webpack transforms imported markdown file into a raw string, then matter parses it
-    const postId = parseInt(id) - 1;
+    const idx = parseInt(id) - 1;
 
-    if (isNaN(postId) || postId >= posts.length) {
+    if (isNaN(idx) || idx >= posts.length) {
       setRedirect(true);
       return;
     }
-    const filename = posts[postId];
-    import(`../../posts/${filename}`)
-      .then((res) => {
-        const md = res.default;
-        const { content, data } = matter(md);
-        setContent(content);
-        setMetadata(data);
-        setLoaded(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const post = posts[idx];
+    setMetadata(post.data);
+    setContent(post.content);
+    setLoaded(true);
   }, [id, posts]);
 
   // Trigger highlight only after content has been loaded
@@ -62,7 +53,7 @@ const Post = () => {
       <div className="post-body">
         <Markdown rehypePlugins={[rehypeRaw]}>{content}</Markdown>
       </div>
-      <PostFooter />
+      <PostFooter idx={parseInt(id) - 1} />
     </div>
   );
 };

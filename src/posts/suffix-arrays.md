@@ -3,8 +3,9 @@ title: "Suffix Arrays"
 author: "Michael Yang"
 date: 2024-06-08
 tags:
-  - cp
   - strings
+  - arrays
+category: ds
 ---
 
 <br>

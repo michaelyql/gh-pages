@@ -5,6 +5,7 @@ date: 2024-07-10
 tags:
   - fenwick tree
   - binary indexed tree
+category: ds
 ---
 
 ### Sum over a range

@@ -6,6 +6,7 @@ tags:
   - cp
   - sparse tables
   - arrays
+category: ds
 ---
 
 ## Problem Statement

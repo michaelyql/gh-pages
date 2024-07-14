@@ -1,6 +1,6 @@
 import { Badge } from "react-bootstrap";
 
-function formatDate(date) {
+export function formatDate(date) {
   return `${date
     .toLocaleString("default", {
       weekday: "long",
@@ -12,7 +12,6 @@ function formatDate(date) {
 }
 
 const PostHeader = ({ props, isLoaded }) => {
-  console.log(props);
   return isLoaded ? (
     <div className="post-header">
       <h1>{props.title}</h1>

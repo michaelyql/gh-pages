@@ -1,10 +1,9 @@
 ---
-title: "Fenwick Tree"
+title: "Segment Tree"
 author: "Michael Yang"
 date: 2024-07-10
 tags:
-  - fenwick tree
-  - binary indexed tree
+  - segment tree
 category: ds
 ---
 

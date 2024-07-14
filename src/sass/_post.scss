@@ -1,6 +1,6 @@
 @use "./variables" as *;
 
-$inline-code-bg: #fef3f3;
+$inline-code-bg: #fffefd;
 
 .post {
   width: min(800px, 100%);
@@ -11,7 +11,7 @@ $inline-code-bg: #fef3f3;
 }
 
 .post-header {
-  margin-bottom: 8px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -22,17 +22,16 @@ $inline-code-bg: #fef3f3;
   h1 {
     margin-bottom: 0px;
     @media screen and (max-width: $device-md) {
-      font-size: 28px;
+      font-size: 1.5rem;
     }
   }
   h3 {
     color: var(--theme1-gray);
     font-weight: 300;
-    font-size: 24px;
+    font-size: 1.25rem;
     margin-bottom: 8px;
     @media screen and (max-width: $device-md) {
       margin-bottom: 4px;
-      font-size: 20px;
     }
   }
 }
@@ -68,7 +67,7 @@ $inline-code-bg: #fef3f3;
     border-radius: 5px;
     padding: 2px 6px;
     margin: 2px;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
   }
   ul {

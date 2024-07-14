@@ -7,7 +7,7 @@ import "prismjs/components/prism-cpp";
 import "prismjs/components/prism-java";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-python";
-import "prismjs/themes/prism-tomorrow.css";
+import "prismjs/themes/prism-coy.css";
 import { createContext } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import BlogHome from "./components/blog/BlogHome";
@@ -24,7 +24,7 @@ function formatFilename(file) {
   return file
     .substring(2)
     .replace(/\.md$/, "")
-    .replace(/-/, " ")
+    .replaceAll(/-/g, " ")
     .split(" ")
     .map((name) => name.charAt(0).toUpperCase() + name.substring(1))
     .join(" ");

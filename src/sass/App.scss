@@ -17,5 +17,8 @@
 }
 
 body {
-  background-color: #fff8ef;
+  background-color: var(--theme1-bg);
+}
+:root {
+  background-color: var(--theme1-bg);
 }

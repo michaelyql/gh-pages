@@ -16,7 +16,7 @@ if (!window.Buffer) {
 
 const Post = () => {
   const { id } = useParams();
-  const posts = useContext(PostContext);
+  const { posts } = useContext(PostContext);
   const [metadata, setMetadata] = useState(null);
   const [content, setContent] = useState("");
   const [redirect, setRedirect] = useState(false);

@@ -12,9 +12,10 @@ pre[class*="language-"] {
   }
 }
 
-// TODO
-// Include button on mobile devices to toggle line wrap
-// Override Prism's default settings to allow line wrap
+// pre = follow md format, scrollbar
+// pre-wrap = wrap if it exceeds device width
+// nowrap = one single line
+// normal = md whitespaces are removed
 code[class*="language-"] {
-  white-space: pre-wrap;
+  white-space: pre;
 }

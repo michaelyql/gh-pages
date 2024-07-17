@@ -31,38 +31,39 @@ function formatFilename(file) {
 }
 
 function getAllPosts() {
-  const _posts = [];
-  require
-    .context("./posts", false, /\.md$/)
-    .keys()
-    .map(async (filename, idx) => {
-      let content, data;
-      await import(`./posts/${filename.substring(2)}`)
-        .then((res) => {
-          const md = res.default;
-          const { content: _content, data: _data } = matter(md);
-          content = _content;
-          data = _data;
-        })
-        .catch((error) => console.log(error));
-      _posts.push({
-        filename: formatFilename(filename),
-        idx,
-        content,
-        data,
-      });
-      return filename;
+  const posts = [];
+
+  const keys = require.context("./posts", false, /\.md$/).keys();
+  const postCount = keys.length;
+
+  keys.map(async (filename, idx) => {
+    let content, data;
+    await import(`./posts/${filename.substring(2)}`)
+      .then((res) => {
+        const md = res.default;
+        const { content: _content, data: _data } = matter(md);
+        content = _content;
+        data = _data;
+      })
+      .catch((error) => console.log(error));
+    posts.push({
+      filename: formatFilename(filename),
+      idx,
+      content,
+      data,
     });
-  return _posts;
+    return filename;
+  });
+  return { posts, postCount };
 }
 
-const posts = getAllPosts();
+const { posts, postCount } = getAllPosts();
 
-export const PostContext = createContext(posts);
+export const PostContext = createContext({ posts, postCount });
 
 function App() {
   return (
-    <PostContext.Provider value={posts}>
+    <PostContext.Provider value={{ posts, postCount }}>
       <BrowserRouter basename="gh-pages">
         <Routes>
           <Route path="/" element={<LandingPage />} />

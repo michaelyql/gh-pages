@@ -7,9 +7,10 @@ tags:
 category: ds
 ---
 
-### Sum over a range
+### Java Implementation
 
 ```java
+// Range query
 int sum(int i) {
     int sum = 0;
     while (i > 0) {
@@ -18,30 +19,16 @@ int sum(int i) {
     }
     return sum;
 }
-```
 
-`i -= i & -i` gets the parent of the current node
-
-<br>
-
-### Point update
-
-```java
+// Point update
 void add(int i, int val) {
     while (i < T.length) {
         T[i] += k;
         i += i & -i; // add last set bit
     }
 }
-```
 
-`i += i & -i` adds the last set bit, propagating the changes to child nodes
-
-<br>
-
-### Building the Fenwick Tree
-
-```java
+// Build tree
 int[] make(int[] ar) {
     int[] tree = Arrays.copyOf(ar, ar.length);
     for (int i = 1; i < tree.length; i++) {
@@ -54,6 +41,127 @@ int[] make(int[] ar) {
 }
 ```
 
-This builds the fenwick tree from the original array
+`i -= i & -i` gets the parent node.
+`i += i & -i` gets the child node.
+
+<br>
+
+### C++ Implementation
+
+```cpp
+int n, t[4*MAXN];
+
+void build(int a[], int v, int tl, int tr) {
+    // tl and tr are the current left and right endpoints
+    if (tl == tr) {
+        t[v] = a[tl];
+    } else {
+        int tm = (tl + tr) / 2;
+        build(a, v*2, tl, tm);
+        build(a, v*2+1, tm+1, tr);
+        t[v] = t[v*2] + t[v*2+1];
+    }
+}
+
+int sum(int v, int tl, int tr, int l, int r) {
+    // l and r are the query endpoints
+    if (l > r)
+        return 0;
+    if (l == tl && r == tr) {
+        return t[v];
+    }
+    int tm = (tl + tr) / 2;
+    return sum(v*2, tl, tm, l, min(r, tm))
+           + sum(v*2+1, tm+1, tr, max(l, tm+1), r);
+}
+
+void update(int v, int tl, int tr, int pos, int new_val) {
+    if (tl == tr) {
+        t[v] = new_val;
+    } else {
+        int tm = (tl + tr) / 2;
+        if (pos <= tm)
+            update(v*2, tl, tm, pos, new_val);
+        else
+            update(v*2+1, tm+1, tr, pos, new_val);
+        t[v] = t[v*2] + t[v*2+1];
+    }
+}
+```
+
+<br>
+
+### Range maximum and no. of times it appears
+
+```cpp
+pair<int, int> t[4*MAXN];
+
+pair<int, int> combine(pair<int, int> a, pair<int, int> b) {
+    if (a.first > b.first)
+        return a;
+    if (b.first > a.first)
+        return b;
+    return make_pair(a.first, a.second + b.second);
+}
+
+void build(int a[], int v, int tl, int tr) {
+    if (tl == tr) {
+        t[v] = make_pair(a[tl], 1);
+    } else {
+        int tm = (tl + tr) / 2;
+        build(a, v*2, tl, tm);
+        build(a, v*2+1, tm+1, tr);
+        t[v] = combine(t[v*2], t[v*2+1]);
+    }
+}
+
+pair<int, int> get_max(int v, int tl, int tr, int l, int r) {
+    if (l > r)
+        return make_pair(-INF, 0);
+    if (l == tl && r == tr)
+        return t[v];
+    int tm = (tl + tr) / 2;
+    return combine(get_max(v*2, tl, tm, l, min(r, tm)),
+                   get_max(v*2+1, tm+1, tr, max(l, tm+1), r));
+}
+
+void update(int v, int tl, int tr, int pos, int new_val) {
+    if (tl == tr) {
+        t[v] = make_pair(new_val, 1);
+    } else {
+        int tm = (tl + tr) / 2;
+        if (pos <= tm)
+            update(v*2, tl, tm, pos, new_val);
+        else
+            update(v*2+1, tm+1, tr, pos, new_val);
+        t[v] = combine(t[v*2], t[v*2+1]);
+    }
+}
+```
+
+<br>
+
+### GCD / LCM over a range
+
+Store the GCD / LCM of left and right child in the current vertex.
+
+<br>
+
+### Count number of zeros, find the k-th zero
+
+```cpp
+int find_kth(int v, int tl, int tr, int k) {
+    if (k > t[v])
+        return -1;
+    if (tl == tr)
+        return tl;
+    int tm = (tl + tr) / 2;
+    if (t[v*2] >= k)
+        return find_kth(v*2, tl, tm, k);
+    else
+        return find_kth(v*2+1, tm+1, tr, k - t[v*2]);
+```
+
+<br>
 
 ## Example Questions

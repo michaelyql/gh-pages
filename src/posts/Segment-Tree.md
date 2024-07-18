@@ -7,7 +7,7 @@ tags:
 category: ds
 ---
 
-### Java Implementation
+### Fenwick Tree Implementation (Java)
 
 ```java
 // Range query
@@ -41,8 +41,8 @@ int[] make(int[] ar) {
 }
 ```
 
-`i -= i & -i` gets the parent node.
-`i += i & -i` gets the child node.
+`i += i & -i` gets the parent range. E.g. `0001` --> `0010` --> `0100` --> `1000`.
+`i -= i & -i` gets the remaining range. E.g. `1101` (13) --> `1100` (12) --> `0100` (8). So you sum up `T[13] + T[12] + T[8]`.
 
 <br>
 

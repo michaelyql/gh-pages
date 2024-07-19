@@ -3,18 +3,26 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { PostContext } from "../../App";
 
-const PostFooter = () => {
-  const [hasPrev, setHasPrev] = useState(true); // change to false
-  const [hasNext, setHasNext] = useState(true);
+// postIndex is 1-indexed
+const PostFooter = ({ postIndex }) => {
+  const { posts, postCount } = useContext(PostContext);
+  const [hasPrev, setHasPrev] = useState(() => postIndex > 1);
+  const [hasNext, setHasNext] = useState(() => postIndex < postCount);
+
+  useEffect(() => {
+    setHasPrev(postIndex > 1);
+    setHasNext(postIndex < postCount);
+  }, [postIndex]);
 
   return (
     <div className="post-footer">
       {hasPrev ? (
         <div className="post-prev">
-          <Link to=".">
+          <Link to={`../posts/${postIndex - 1}`} className="nav-link">
             <FontAwesomeIcon icon={faChevronLeft} />
             Previous
           </Link>
@@ -24,7 +32,7 @@ const PostFooter = () => {
       )}
       {hasNext ? (
         <div className="post-next">
-          <Link to=".">
+          <Link to={`../posts/${postIndex + 1}`} className="nav-link">
             Next
             <FontAwesomeIcon icon={faChevronRight} />
           </Link>

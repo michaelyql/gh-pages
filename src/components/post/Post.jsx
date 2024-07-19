@@ -2,7 +2,7 @@ import { Buffer } from "buffer";
 import Prism from "prismjs";
 import { useContext, useEffect, useState } from "react";
 import Markdown from "react-markdown";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import rehypeRaw from "rehype-raw";
 import { PostContext } from "../../App";
 import PostFooter from "./PostFooter";
@@ -14,8 +14,8 @@ if (!window.Buffer) {
   window.Buffer = Buffer;
 }
 
-const Post = () => {
-  const { id } = useParams();
+// id is 1-indexed
+const Post = ({ id }) => {
   const { posts } = useContext(PostContext);
   const [metadata, setMetadata] = useState(null);
   const [content, setContent] = useState("");
@@ -53,7 +53,7 @@ const Post = () => {
       <div className="post-body">
         <Markdown rehypePlugins={[rehypeRaw]}>{content}</Markdown>
       </div>
-      <PostFooter idx={parseInt(id) - 1} />
+      <PostFooter postIndex={id} />
     </div>
   );
 };

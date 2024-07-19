@@ -70,7 +70,13 @@ function App() {
           <Route path="/blog" element={<BlogLayout />}>
             <Route index element={<BlogHome />} />
             <Route path="posts" element={<Posts />} />
-            <Route path="posts/:id" element={<Post />} />
+            {posts.map((post, index) => (
+              <Route
+                path={`posts/${index + 1}`}
+                element={<Post id={index + 1} />}
+                key={index}
+              />
+            ))}
             <Route path="*" element={<Navigate to="." />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />

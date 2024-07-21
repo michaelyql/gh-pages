@@ -19,6 +19,7 @@
 body {
   background-color: var(--theme1-bg);
 }
-:root {
+#root {
   background-color: var(--theme1-bg);
+  min-width: 320px;
 }

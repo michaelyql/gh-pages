@@ -3,14 +3,35 @@
 $inline-code-bg: #fffefd;
 
 .post {
-  width: min(800px, 100%);
-  margin-top: 24px;
+  width: 100%;
   @media screen and (max-width: $device-md) {
     margin-top: 8px;
   }
   .home-link {
     display: flex;
     justify-content: center;
+  }
+}
+
+.post-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+
+  @media screen and (max-width: $device-md) {
+    flex-direction: column;
+  }
+  .content {
+    width: min($device-md, 100%);
+  }
+  .toc {
+    margin-left: 24px;
+    width: 256px;
+
+    @media screen and (max-width: $device-md) {
+      display: none;
+    }
   }
 }
 
@@ -86,13 +107,9 @@ $inline-code-bg: #fffefd;
   .post-next {
     padding: 8px 8px;
     .nav-link {
-      text-transform: uppercase;
-      padding: 16px 24px;
+      padding: 8px 16px;
       border-radius: 6px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 8px;
+
       color: var(--theme1-accent);
       &:hover {
         color: var(--theme1-accent);
@@ -102,9 +119,15 @@ $inline-code-bg: #fffefd;
   }
   .post-prev {
     margin-right: auto;
+    .nav-link {
+      align-items: flex-start;
+    }
   }
   .post-next {
     margin-left: auto;
+    .nav-link {
+      align-items: flex-end;
+    }
   }
 }
 

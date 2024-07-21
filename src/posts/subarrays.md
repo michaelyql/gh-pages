@@ -7,13 +7,13 @@ tags:
 category: ds
 ---
 
-## Subarrays
+### Subarrays
 
 ```js
 console.log("Hello world");
 ```
 
-## Practice Questions
+### Practice Questions
 
 Count number of subarrays
 

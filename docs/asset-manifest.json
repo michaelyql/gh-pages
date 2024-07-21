@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/gh-pages/static/css/main.bf4d99a1.css",
+    "main.css": "/gh-pages/static/css/main.7e6e6aa3.css",
     "main.js": "/gh-pages/static/js/bundle.js",
     "static/js/chunk.js": "/gh-pages/static/js/chunk.js",
     "images/src/assets/spring.png": "/gh-pages/images/src/assets/spring.png",
@@ -9,12 +9,12 @@
     "images/src/assets/codeforces.svg": "/gh-pages/images/src/assets/codeforces.svg",
     "styles.css.map": "/gh-pages/static/css/styles.css.map",
     "bundle.js.map": "/gh-pages/static/js/bundle.js.map",
-    "main.bf4d99a1.css.map": "/gh-pages/static/css/main.bf4d99a1.css.map",
+    "main.7e6e6aa3.css.map": "/gh-pages/static/css/main.7e6e6aa3.css.map",
     "chunk.js.map": "/gh-pages/static/js/chunk.js.map"
   },
   "entrypoints": [
     "static/css/styles.css",
     "static/js/bundle.js",
-    "static/css/main.bf4d99a1.css"
+    "static/css/main.7e6e6aa3.css"
   ]
 }

@@ -9,7 +9,7 @@ import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-python";
 import "prismjs/themes/prism-coy.css";
 import { createContext } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import BlogHome from "./components/blog/BlogHome";
 import BlogLayout from "./components/blog/BlogLayout";
 import LandingPage from "./components/LandingPage";
@@ -64,24 +64,26 @@ export const PostContext = createContext({ posts, postCount });
 function App() {
   return (
     <PostContext.Provider value={{ posts, postCount }}>
-      <BrowserRouter basename="gh-pages">
+      <HashRouter basename="gh-pages">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/blog" element={<BlogLayout />}>
             <Route index element={<BlogHome />} />
             <Route path="posts" element={<Posts />} />
-            {posts.map((post, index) => (
-              <Route
-                path={`posts/${index + 1}`}
-                element={<Post id={index + 1} />}
-                key={index}
-              />
-            ))}
+            {posts
+              .sort((a, b) => new Date(b.data.date) - new Date(a.data.date))
+              .map((post, index) => (
+                <Route
+                  path={`posts/${index + 1}`}
+                  element={<Post id={index + 1} />}
+                  key={index}
+                />
+              ))}
             <Route path="*" element={<Navigate to="." />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </PostContext.Provider>
   );
 }

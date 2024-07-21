@@ -9,7 +9,7 @@ tags:
 category: ds
 ---
 
-## Problem Statement
+### Problem Statement
 
 Given an array A of size **N**, and given **Q** queries where each query wants to find the minimum element in the range **[l, r]**, find an efficient way to process all the queries.
 
@@ -69,12 +69,12 @@ int query(int L, int R) {
 
 <br>
 
-## Related Problems
+### Related Problems
 
 text
 
 <br>
 
-## Resources
+### Resources
 
 text

@@ -5,6 +5,7 @@ const BlogHome = () => {
     <>
       <h1>Blog home</h1>
       <Link to="posts">Posts</Link>
+      <Link to="/">Landing</Link>
     </>
   );
 };

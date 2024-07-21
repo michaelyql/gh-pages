@@ -11,7 +11,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { PostContext } from "../../App";
 import imageMap from "../../assets/Images";
-import { formatDate } from "./PostHeader";
+import { CustomBreadcrumbs, formatDate } from "./PostHeader";
 
 const categoryMapping = {
   cp: "Competitive Programming",
@@ -50,15 +50,12 @@ const Posts = () => {
 
   return (
     <>
-      <h1>Posts</h1>
+      <CustomBreadcrumbs />
       <div
         className={`posts-container d-flex flex-wrap flex-md-row flex-sm-column align-items-center justify-content-center`}
       >
         {posts
           .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
-          .sort((a, b) => {
-            return new Date(b.data.date) - new Date(a.data.date);
-          })
           .map((post, idx) => {
             const { filename, data } = post;
             const relativePostIndex = page * rowsPerPage + idx + 1;
@@ -73,7 +70,7 @@ const Posts = () => {
                         </Typography>
                         <Typography
                           variant="subtitle1"
-                          className="mb-2"
+                          className="mb-2 mt-2"
                           sx={{ fontWeight: 400, fontSize: "1.25rem" }}
                         >
                           {filename}

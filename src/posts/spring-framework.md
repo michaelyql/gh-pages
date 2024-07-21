@@ -24,4 +24,4 @@ inversion of control
 - the spring container handles the instantiation of components and injects them
 - `getBean()` retrieves
 
-## beans
+### beans

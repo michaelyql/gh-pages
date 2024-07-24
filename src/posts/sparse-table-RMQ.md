@@ -9,25 +9,25 @@ tags:
 category: ds
 ---
 
-### Problem Statement
+## Problem Statement
 
 Given an array A of size **N**, and given **Q** queries where each query wants to find the minimum element in the range **[l, r]**, find an efficient way to process all the queries.
 
 <br>
 
-### Brute Force:
+## Brute Force
 
 Time Complexity: O(Q\*N)
 
 <br>
 
-### Dense Table
+## Dense Table
 
 Calculate every possible interval: O(N^2 + Q)
 
 <br>
 
-### Sparse Table
+## Sparse Table
 
 We don't need to calculate every interval, just a few of them (logarithmic in number).
 

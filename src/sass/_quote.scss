@@ -1,0 +1,13 @@
+@use "./variables" as *;
+
+blockquote {
+  border-left: 10px solid #abcdef;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  color: var(--theme1-gray);
+  // &::before {
+  //   content: "\201c";
+  //   font-size: 1.5rem;
+  //   display: block;
+  // }
+}

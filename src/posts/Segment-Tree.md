@@ -7,7 +7,7 @@ tags:
 category: ds
 ---
 
-### Fenwick Tree Implementation (Java)
+## Fenwick Tree Implementation (Java)
 
 ```java
 // Range query
@@ -46,7 +46,7 @@ int[] make(int[] ar) {
 
 <br>
 
-### C++ Implementation
+## C++ Implementation
 
 ```cpp
 int n, t[4*MAXN];
@@ -91,7 +91,7 @@ void update(int v, int tl, int tr, int pos, int new_val) {
 
 <br>
 
-### Range maximum and no. of times it appears
+## Range maximum and no. of times it appears
 
 ```cpp
 pair<int, int> t[4*MAXN];
@@ -141,13 +141,13 @@ void update(int v, int tl, int tr, int pos, int new_val) {
 
 <br>
 
-### GCD / LCM over a range
+## GCD / LCM over a range
 
 Store the GCD / LCM of left and right child in the current vertex.
 
 <br>
 
-### Count number of zeros, find the k-th zero
+## Count number of zeros, find the k-th zero
 
 ```cpp
 int find_kth(int v, int tl, int tr, int k) {
@@ -164,4 +164,4 @@ int find_kth(int v, int tl, int tr, int k) {
 
 <br>
 
-### Example Questions
+## Example Questions

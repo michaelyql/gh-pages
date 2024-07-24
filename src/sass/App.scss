@@ -3,6 +3,8 @@
 @use "./pre";
 @use "./post";
 @use "./link";
+@use "./landing";
+@use "./quote";
 
 * {
   box-sizing: border-box;
@@ -19,7 +21,9 @@
 body {
   background-color: var(--theme1-bg);
 }
+
 #root {
   background-color: var(--theme1-bg);
+  width: 100vw;
   min-width: 320px;
 }

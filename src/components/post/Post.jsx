@@ -47,19 +47,42 @@ const Post = ({ id }) => {
 
   // Extract heading tags only after DOM has loaded with content
   useLayoutEffect(() => {
-    const headers = document.querySelectorAll("h1,h2,h3");
-    const modifiedHeaders = [];
-    headers.forEach((header, key) => {
-      if (key == 1) return; // Skip headers[1] which is the date header
-      modifiedHeaders.push(header);
-      header.setAttribute("id", "para" + key);
-      header.setAttribute("key", key);
-    });
-    const _anchorItems = modifiedHeaders.map((item, index) => {
+    const postBody = document.querySelector(".post-body");
+    const h2Elements = [...postBody.querySelectorAll("h2")];
+    const h3NestedElements = new Array(h2Elements.length);
+    for (let i = 0; i < h2Elements.length; i++) {
+      h3NestedElements[i] = new Array();
+    }
+
+    for (let i = 0; i < h2Elements.length; i++) {
+      const h2Parent = h2Elements[i];
+      h2Parent.setAttribute("id", `para-${i}`);
+      h2Parent.setAttribute("key", `para-${i}`);
+      let sibling = h2Parent.nextElementSibling;
+      let j = 1;
+      while (sibling && sibling.tagName !== "H2") {
+        if (sibling.tagName === "H3") {
+          sibling.setAttribute("id", `para-${i}-${j}`);
+          sibling.setAttribute("key", `para-${i}-${j}`);
+          h3NestedElements[i].push({
+            key: sibling.getAttribute("key"),
+            href: `#${sibling.getAttribute("id")}`,
+            title: sibling.innerText,
+            target: "_self",
+          });
+          j += 1;
+        }
+        sibling = sibling.nextElementSibling;
+      }
+    }
+
+    const _anchorItems = h2Elements.map((item, index) => {
       return {
         key: item.getAttribute("key"),
         href: `#${item.getAttribute("id")}`,
         title: item.innerText,
+        target: "_self",
+        children: h3NestedElements[index],
       };
     });
     setAnchorItems([..._anchorItems]);

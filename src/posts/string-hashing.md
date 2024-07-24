@@ -7,3 +7,7 @@ tags:
   - hashing
 category: cp
 ---
+
+## Knuth Morris Pratt (KMP)
+
+Very important algorithm

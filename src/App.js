@@ -9,15 +9,20 @@ import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-python";
 import "prismjs/themes/prism-coy.css";
 import { createContext } from "react";
-import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import BlogHome from "./components/blog/BlogHome";
 import BlogLayout from "./components/blog/BlogLayout";
+import { Highlight } from "./components/customHtmlElements/Highlight";
 import LandingPage from "./components/LandingPage";
 import Post from "./components/post/Post";
 import Posts from "./components/post/Posts";
 import "./sass/App.scss";
 
 Prism.disableWorkerMessageHandler = false;
+
+// Valid custom name documentation can be found here:
+// https://html.spec.whatwg.org/multipage/custom-elements.html#valid-custom-element-name
+customElements.define("highlight-text", Highlight);
 
 function formatFilename(file) {
   if (!file) return "";
@@ -59,12 +64,14 @@ function getAllPosts() {
 
 const { posts, postCount } = getAllPosts();
 
+console.log(posts);
+
 export const PostContext = createContext({ posts, postCount });
 
 function App() {
   return (
     <PostContext.Provider value={{ posts, postCount }}>
-      <HashRouter basename="gh-pages">
+      <BrowserRouter basename="/gh-pages">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/blog" element={<BlogLayout />}>
@@ -83,7 +90,7 @@ function App() {
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </PostContext.Provider>
   );
 }

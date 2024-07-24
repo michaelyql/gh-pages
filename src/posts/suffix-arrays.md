@@ -8,6 +8,8 @@ tags:
 category: ds
 ---
 
+## Definition of Suffix Array
+
 <br>
 
 A suffix array is a **sorted** array of all the suffixes of a string.
@@ -18,7 +20,7 @@ Note that suffixes are always assumed to end at the last character of the string
 
 <br>
 
-### Construction of Suffix Array
+## Construction of Suffix Array
 
 Append an end-of-string character that is lower than any of the alphabets in terms of their ASCII value. `$` or a space `" "` do just fine.
 
@@ -30,7 +32,7 @@ Each iteration of sorting doubles the length of the string being compared. In to
 
 <br>
 
-### Longest Common Prefix (LCP)
+## Longest Common Prefix (LCP)
 
 Longest common prefix is an array representing the **longest common prefix** between each pair of **adjacent suffixes** in the suffix array, where `lcp[i]` represents the LCP between `suff[i]` and `suff[i-1]`. Why might we need this?
 
@@ -40,7 +42,7 @@ As an aside, a suffix array that has a LCP table is typically called an _enhance
 
 <br>
 
-### Uses of Suffix Arrays
+## Uses of Suffix Arrays
 
 [This website](https://cp-algorithms.com/string/suffix-array.html) outlines three applications of suffix arrays.
 

@@ -3,14 +3,14 @@
 - [x] Fix gh pages
 - [x] Progress bar + Table of contents for post page
 - [x] Posts design
-- [] Include button for code on mobile devices to toggle on/off line wrapping
-- [] Set up Github pages push pipeline
-- [] Landing page design
-- [] Create lottie lab svg animations to use in landing page
-- [] Custom cursor img
-- [] Explore using google sheets api to store and pull data
-- [] Microinteractions with icons
-- [] Sorting/filtering/search of post by tags
+- [ ] Include button for code on mobile devices to toggle on/off line wrapping
+- [ ] Set up Github pages push pipeline
+- [ ] Landing page design
+- [ ] Create lottie lab svg animations to use in landing page
+- [ ] Custom cursor img
+- [ ] Explore using google sheets api to store and pull data
+- [ ] Microinteractions with icons
+- [ ] Sorting/filtering/search of post by tags
 - [x] Prev/next button for post
 
 ## Landing Page
@@ -31,4 +31,4 @@ ideas for interface mockup
 - email services: gmail, outlook, yahoo mail
 - games: pokemon, tetris, super mario, minecraft,
 
-[Link](https://michaelyql.github.io/gh-pages/#/)
+[Link](https://michaelyql.github.io/gh-pages/)

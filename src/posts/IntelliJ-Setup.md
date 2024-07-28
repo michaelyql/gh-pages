@@ -5,7 +5,7 @@ date: 2024-07-24
 tags:
   - java
   - intellij
-category:
+category: intellij
 ---
 
 ## Content Root
@@ -16,15 +16,11 @@ Configuring the rest of the root types can be done in `File` > `Project Structur
 
 For example, if your project had a structure like `/my-proj/src/main/java/com/package/Main.java`, the content root would be `/my-proj`.
 
-<br>
-
 ### Sources Root
 
 > Sources root is the main directory containing source code files, which are included in the **classpath** and are compiled.
 
 This would be `/my-proj/src/main/java`.
-
-<br >
 
 ### Resources Root
 
@@ -35,8 +31,6 @@ This would be `/my-proj/src/main/java`.
 > The directory containing the test files, like for JUnit.
 
 This would be `/my-proj/src/test/java`.
-
-<br>
 
 ### Test Resources Root
 

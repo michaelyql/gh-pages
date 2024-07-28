@@ -5,7 +5,7 @@ date: 2024-07-23
 tags:
   - java
   - gui
-category:
+category: java
 ---
 
 ## Graphical User Interfaces in Java

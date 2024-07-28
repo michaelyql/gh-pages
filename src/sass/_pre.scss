@@ -3,7 +3,9 @@
 pre[class*="language-"] {
   width: 100%;
   border-radius: 8px;
-  font-size: 14px !important;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: "JetBrains Mono", monospace;
   margin-bottom: 16px;
   margin-top: 8px;
 

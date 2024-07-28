@@ -17,6 +17,9 @@ const categoryMapping = {
   cp: "Competitive Programming",
   ds: "Data Structures & Algorithms",
   spring: "Frameworks",
+  intellij: "Java",
+  java: "Java",
+  postgres: "Backend/Database",
 };
 
 const Posts = () => {

@@ -12,6 +12,8 @@
 - [ ] Microinteractions with icons
 - [ ] Sorting/filtering/search of post by tags
 - [x] Prev/next button for post
+- [ ] Add expand/close code option for each code block
+- [ ] Add link to icons8 for citation
 
 ## Landing Page
 

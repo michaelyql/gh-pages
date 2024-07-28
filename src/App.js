@@ -7,13 +7,13 @@ import "prismjs/components/prism-cpp";
 import "prismjs/components/prism-java";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-python";
-import "prismjs/themes/prism-coy.css";
+import "prismjs/themes/prism-okaidia.css";
 import { createContext } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import BlogHome from "./components/blog/BlogHome";
 import BlogLayout from "./components/blog/BlogLayout";
 import { Highlight } from "./components/customHtmlElements/Highlight";
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./components/landing/LandingPage";
 import Post from "./components/post/Post";
 import Posts from "./components/post/Posts";
 import "./sass/App.scss";
@@ -63,8 +63,6 @@ function getAllPosts() {
 }
 
 const { posts, postCount } = getAllPosts();
-
-console.log(posts);
 
 export const PostContext = createContext({ posts, postCount });
 

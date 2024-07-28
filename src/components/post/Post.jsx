@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { Anchor } from "antd";
 import { Buffer } from "buffer";
 import Prism from "prismjs";
@@ -51,7 +52,7 @@ const Post = ({ id }) => {
     const h2Elements = [...postBody.querySelectorAll("h2")];
     const h3NestedElements = new Array(h2Elements.length);
     for (let i = 0; i < h2Elements.length; i++) {
-      h3NestedElements[i] = new Array();
+      h3NestedElements[i] = [];
     }
 
     for (let i = 0; i < h2Elements.length; i++) {
@@ -106,7 +107,12 @@ const Post = ({ id }) => {
         </div>
         <div className="toc">
           {anchorItems.length > 0 && (
-            <Anchor items={anchorItems} offsetTop={96} />
+            <>
+              <Typography variant="overline" className="toc-header">
+                Contents
+              </Typography>
+              <Anchor items={anchorItems} offsetTop={96} />
+            </>
           )}
         </div>
       </div>

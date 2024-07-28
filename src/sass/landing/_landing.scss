@@ -1,0 +1,51 @@
+@use "../variables" as *;
+@use "./top-nav";
+@use "./side-toolbar";
+
+$landing-bg: #f6f8fc;
+
+.landing {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $landing-bg;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.emails {
+  flex-grow: 1;
+  background-color: rgb(255, 255, 255, 1);
+  border-radius: 16px;
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: -80vw;
+  width: 80vw;
+  height: 100vh;
+  background-color: #f0f8ffec;
+  border-radius: 6px;
+  @media screen and (max-width: $device-sm) {
+    display: block;
+  }
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0;
+  color: #fff !important;
+  text-align: center;
+  padding-top: 4px;
+  background-color: #af2f2f !important;
+  margin-right: 14px;
+}

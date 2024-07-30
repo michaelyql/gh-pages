@@ -1,0 +1,8 @@
+.emails {
+  flex-grow: 1;
+  background-color: rgb(255, 255, 255, 1);
+  border-radius: 16px;
+  &.margin-left {
+    margin-left: 72px;
+  }
+}

@@ -1,6 +1,7 @@
 @use "../variables" as *;
 @use "./top-nav";
 @use "./side-toolbar";
+@use "./emails";
 
 $landing-bg: #f6f8fc;
 
@@ -16,12 +17,6 @@ $landing-bg: #f6f8fc;
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-}
-
-.emails {
-  flex-grow: 1;
-  background-color: rgb(255, 255, 255, 1);
-  border-radius: 16px;
 }
 
 .mobile-menu {

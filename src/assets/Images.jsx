@@ -1,5 +1,6 @@
 import CodeforcesImage from "./codeforces.svg";
 import DataStructureImage from "./data-structure.png";
+import GitHub from "./github-logo.png";
 import IntelliJ from "./intellij.png";
 import Java from "./java.png";
 import Postgres from "./postgres.png";
@@ -12,6 +13,7 @@ const imageMap = {
   intellij: IntelliJ,
   java: Java,
   postgres: Postgres,
+  git: GitHub,
 };
 
 export default imageMap;

@@ -14,6 +14,7 @@
 - [x] Prev/next button for post
 - [ ] Add expand/close code option for each code block
 - [ ] Add link to icons8 for citation
+- [ ] Design derp dragon logo
 
 ## Landing Page
 

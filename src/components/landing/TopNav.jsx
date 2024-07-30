@@ -6,14 +6,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Input } from "@mui/material";
+import { useState } from "react";
 import NineDots from "./NineDots";
 import Settings from "./Settings";
 
-const TopNav = () => {
+const TopNav = ({ isToolbarOpen, setIsToolbarOpen }) => {
+  // internal copy of toolbar state
+  const [_isToolbarOpen, _setIsToolbarOpen] = useState(isToolbarOpen);
+  const updateToolbarState = (newToolbarState) => {
+    setIsToolbarOpen(newToolbarState);
+    _setIsToolbarOpen(newToolbarState);
+  };
   return (
     <div className="top-nav">
       <div className="left-icons">
-        <FontAwesomeIcon className="bars fa-fw fa-lg" icon={faBars} />
+        <FontAwesomeIcon
+          className="bars fa-fw fa-lg"
+          icon={faBars}
+          onClick={() => updateToolbarState(!_isToolbarOpen)}
+        />
         <div className="logo">Logo Img</div>
       </div>
       <div className="search">

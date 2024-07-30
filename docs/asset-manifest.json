@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/gh-pages/static/css/main.7f6c0c92.css",
+    "main.css": "/gh-pages/static/css/main.1947dab0.css",
     "main.js": "/gh-pages/static/js/bundle.js",
     "static/js/chunk.js": "/gh-pages/static/js/chunk.js",
     "images/src/assets/intellij.png": "/gh-pages/images/src/assets/intellij.png",
@@ -8,6 +8,7 @@
     "images/src/assets/java.png": "/gh-pages/images/src/assets/java.png",
     "images/src/assets/spring.png": "/gh-pages/images/src/assets/spring.png",
     "images/src/assets/data-structure.png": "/gh-pages/images/src/assets/data-structure.png",
+    "images/src/assets/github-logo.png": "/gh-pages/images/src/assets/github-logo.png",
     "index.html": "/gh-pages/index.html",
     "images/src/assets/star-unfilled.png": "/gh-pages/images/src/assets/star-unfilled.png",
     "images/src/assets/star-filled.png": "/gh-pages/images/src/assets/star-filled.png",
@@ -21,12 +22,12 @@
     "images/src/assets/sent-filled.png": "/gh-pages/images/src/assets/sent-filled.png",
     "styles.css.map": "/gh-pages/static/css/styles.css.map",
     "bundle.js.map": "/gh-pages/static/js/bundle.js.map",
-    "main.7f6c0c92.css.map": "/gh-pages/static/css/main.7f6c0c92.css.map",
+    "main.1947dab0.css.map": "/gh-pages/static/css/main.1947dab0.css.map",
     "chunk.js.map": "/gh-pages/static/js/chunk.js.map"
   },
   "entrypoints": [
     "static/css/styles.css",
     "static/js/bundle.js",
-    "static/css/main.7f6c0c92.css"
+    "static/css/main.1947dab0.css"
   ]
 }

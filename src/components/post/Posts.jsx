@@ -20,6 +20,7 @@ const categoryMapping = {
   intellij: "Java",
   java: "Java",
   postgres: "Backend/Database",
+  git: "Source Control",
 };
 
 const Posts = () => {

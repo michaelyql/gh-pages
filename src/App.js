@@ -1,6 +1,7 @@
 import Prism from "prismjs";
 // cpp depends on clike, which depends on c, so all have to be imported
 import matter from "gray-matter";
+import "prismjs/components/prism-bash";
 import "prismjs/components/prism-c";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-cpp";

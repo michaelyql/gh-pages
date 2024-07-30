@@ -4,8 +4,26 @@ $hover-bg: rgba(32, 33, 36, 0.059);
 
 .side-toolbar {
   padding-right: 15px;
+  position: relative;
   @media screen and (max-width: $device-sm) {
     display: none;
+  }
+  &:not(.open) {
+    position: fixed;
+    left: 0;
+    min-width: 72px;
+    max-width: 72px;
+    .compose-wrapper {
+      .compose {
+        min-width: 56px;
+        padding-right: 0;
+      }
+    }
+    .main {
+    }
+  }
+  .compose-wrapper {
+    display: inline-block;
   }
   .compose {
     display: flex;

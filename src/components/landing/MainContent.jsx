@@ -1,4 +1,5 @@
 import Emails from "./Emails";
+import RightToolbar from "./RightToolbar";
 import SideToolbar from "./SideToolbar";
 
 const MainContent = () => {
@@ -6,6 +7,7 @@ const MainContent = () => {
     <div className="main-content">
       <SideToolbar />
       <Emails />
+      <RightToolbar />
     </div>
   );
 };

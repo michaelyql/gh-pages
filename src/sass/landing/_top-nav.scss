@@ -1,6 +1,8 @@
 @use "../variables" as *;
 
-$icon-hover-color: #dde3ec;
+$top-nav-icon-hover-color: #e8e9ed;
+$search-icon-hover-color: #dde3ec;
+$top-nav-icon-color: #5f6368;
 
 .top-nav {
   display: flex;
@@ -9,7 +11,7 @@ $icon-hover-color: #dde3ec;
   padding: 8px;
   border-radius: 6px;
   .bars {
-    color: #5f6368;
+    color: $top-nav-icon-color;
     padding: 10px;
     margin: 0 4px;
     height: 18px;
@@ -17,7 +19,7 @@ $icon-hover-color: #dde3ec;
     cursor: pointer;
     border-radius: 50%;
     &:hover {
-      background-color: $icon-hover-color;
+      background-color: $top-nav-icon-hover-color;
     }
   }
   .left-icons {
@@ -55,13 +57,13 @@ $icon-hover-color: #dde3ec;
     }
     .magnifying-glass {
       padding: 8px;
-      color: #5f6368;
+      color: $top-nav-icon-color;
       cursor: pointer;
       width: 18px;
       height: 18px;
       margin-right: 4px;
       &:hover {
-        background-color: $icon-hover-color;
+        background-color: $search-icon-hover-color;
         border-radius: 50%;
       }
       @media screen and (max-width: $device-sm) {
@@ -93,7 +95,7 @@ $icon-hover-color: #dde3ec;
       }
       padding: 8px;
       &:hover {
-        background-color: $icon-hover-color;
+        background-color: $search-icon-hover-color;
         border-radius: 50%;
       }
     }
@@ -105,7 +107,7 @@ $icon-hover-color: #dde3ec;
       margin-right: 0;
       cursor: pointer;
       &:hover {
-        background-color: $icon-hover-color;
+        background-color: $top-nav-icon-hover-color;
         border-radius: 50%;
       }
       @media screen and (min-width: $device-sm) {
@@ -130,12 +132,12 @@ $icon-hover-color: #dde3ec;
     // All icon children
     & > * {
       margin-left: 0.5rem;
-      color: #5f6368;
+      color: $top-nav-icon-color;
       cursor: pointer;
       padding: 8px;
       border-radius: 50%;
       &:hover {
-        background-color: $icon-hover-color;
+        background-color: $top-nav-icon-hover-color;
       }
     }
     .question-mark {

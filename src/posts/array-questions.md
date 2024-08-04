@@ -166,4 +166,23 @@ class Solution:
 
 ## LC3299 Minimum Operations to Make Array Equal to Target
 
-An operation counts as taking a subarray and either incrementing or decrementing it by 1. Find the minimum number of operations to make the input array equal to the target array.
+An operation counts as taking a subarray and either incrementing or decrementing all elements in it by 1. Find the minimum number of operations to make the input array equal to the target array.
+
+```cpp
+long long minimumOperations(vector<int>& nums, vector<int>& target) {
+    long ans = abs(nums[0] - target[0]);
+
+    for (int i = 1; i < nums.size(); ++i) {
+      const int currDiff = target[i] - nums[i];
+      const int prevDiff = target[i - 1] - nums[i - 1];
+      if (currDiff >= 0 && prevDiff >= 0)
+        ans += max(0, currDiff - prevDiff);
+      else if (currDiff <= 0 && prevDiff <= 0)
+        ans += max(0, abs(currDiff) - abs(prevDiff));
+      else
+        ans += abs(currDiff);
+    }
+
+    return ans;
+  }
+```

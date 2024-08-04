@@ -1,6 +1,7 @@
 @use "../variables" as *;
 
 $hover-bg: rgba(32, 33, 36, 0.059);
+$selected-bg: #d3e3fd;
 
 .side-toolbar {
   padding-right: 15px;
@@ -20,12 +21,44 @@ $hover-bg: rgba(32, 33, 36, 0.059);
       }
     }
     .main {
+      min-width: 72px;
+      max-width: 72px;
+      & > * {
+        width: 72px;
+        background-color: transparent;
+        &:hover:not(.selected) {
+          background-color: transparent;
+        }
+        &:not(.selected) .icon-wrapper {
+          &:hover {
+            background-color: $hover-bg;
+          }
+        }
+        &.selected {
+          .icon-wrapper {
+            background-color: $selected-bg;
+          }
+        }
+        &.inbox {
+          .icon-wrapper::after {
+            content: "";
+            background-color: rgb(177, 26, 26);
+            position: absolute;
+            top: 2px;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+          }
+        }
+      }
     }
   }
   .compose-wrapper {
     display: inline-block;
   }
   .compose {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -39,6 +72,11 @@ $hover-bg: rgba(32, 33, 36, 0.059);
     margin-left: 0.5rem;
     font-size: 0.875rem;
     font-family: Roboto, Helvetica, Arial, sans-serif;
+    &:hover {
+      box-shadow:
+        0 1px 2px 0 rgba(60, 64, 67, 0.3),
+        0 3px 3px 3px rgba(60, 64, 67, 0.15);
+    }
     .pen-icon {
       width: 24px;
       height: 24px;
@@ -47,7 +85,7 @@ $hover-bg: rgba(32, 33, 36, 0.059);
     }
   }
   .selected {
-    background-color: #d3e3fd;
+    background-color: $selected-bg;
     font-weight: 700;
   }
   .main {
@@ -67,17 +105,31 @@ $hover-bg: rgba(32, 33, 36, 0.059);
       &:hover:not(.selected) {
         background-color: $hover-bg;
       }
+      .icon-wrapper {
+        position: relative;
+        left: -8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
       img {
         width: 18px;
         height: 18px;
-        margin-right: 1rem;
       }
-      transition:
-        border-radius 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-        margin 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-        width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      // transition:
+      //   border-radius 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+      //   margin 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+      //   width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      .sent {
+        position: relative;
+        left: 2px;
+      }
     }
     .inbox {
+      position: relative;
       span:first-of-type {
         font-weight: 700 !important;
       }

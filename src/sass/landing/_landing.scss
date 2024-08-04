@@ -2,6 +2,7 @@
 @use "./top-nav";
 @use "./side-toolbar";
 @use "./emails";
+@use "./right-toolbar";
 
 $landing-bg: #f6f8fc;
 
@@ -43,4 +44,10 @@ $landing-bg: #f6f8fc;
   padding-top: 4px;
   background-color: #af2f2f !important;
   margin-right: 14px;
+}
+
+.right-toolbar {
+  @media screen and (max-width: $device-sm) {
+    display: none;
+  }
 }

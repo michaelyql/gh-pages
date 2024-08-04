@@ -4,6 +4,7 @@ import GitHub from "./github-logo.png";
 import IntelliJ from "./intellij.png";
 import Java from "./java.png";
 import Postgres from "./postgres.png";
+import ReactLogo from "./react.png";
 import Spring from "./spring.png";
 
 const imageMap = {
@@ -14,6 +15,7 @@ const imageMap = {
   java: Java,
   postgres: Postgres,
   git: GitHub,
+  react: ReactLogo,
 };
 
 export default imageMap;

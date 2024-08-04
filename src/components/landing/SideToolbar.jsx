@@ -1,7 +1,9 @@
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import ClockFilled from "../../assets/clock-filled.png";
 import ClockUnfilled from "../../assets/clock-unfilled.png";
-import InboxFilled from "../../assets/inbox-filled.png";
+import InboxFilled from "../../assets/inbox-filled-black.png";
 import InboxUnfilled from "../../assets/inbox-unfilled.png";
 import Pen from "../../assets/pen.png";
 import SentFilled from "../../assets/sent-filled.png";
@@ -16,14 +18,16 @@ const unfilledSidebarIcons = [
   <img src={InboxUnfilled} alt="inbox unfilled" />,
   <img src={StarUnfilled} alt="star unfilled" />,
   <img src={ClockUnfilled} alt="clock unfilled" />,
-  <img src={SentUnfilled} alt="sent unfilled" />,
+  <img src={SentUnfilled} alt="sent unfilled" className="sent" />,
+  <FontAwesomeIcon icon={faChevronDown} className="fa-fw" />,
 ];
 
 const filledSidebarIcons = [
   <img src={InboxFilled} alt="inbox filled" />,
   <img src={StarFilled} alt="star filled" />,
   <img src={ClockFilled} alt="clock filled" />,
-  <img src={SentFilled} alt="sent filled" />,
+  <img src={SentFilled} alt="sent filled" className="sent" />,
+  <FontAwesomeIcon icon={faChevronDown} className="fa-fw" />,
 ];
 
 const SideToolbar = () => {
@@ -76,7 +80,9 @@ const SideToolbar = () => {
               ref={itemRefs[i]}
               onClick={() => setSelectedPage(item)}
             >
-              {isSelected ? filledSidebarIcons[i] : unfilledSidebarIcons[i]}
+              <div className="icon-wrapper">
+                {isSelected ? filledSidebarIcons[i] : unfilledSidebarIcons[i]}
+              </div>
               {isToolbarOpen && <span className="d-block me-auto">{item}</span>}
               {isToolbarOpen && item === "Inbox" && (
                 <span className="d-block">1,438</span>

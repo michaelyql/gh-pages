@@ -21,6 +21,7 @@ const categoryMapping = {
   java: "Java",
   postgres: "Backend/Database",
   git: "Source Control",
+  react: "Frameworks",
 };
 
 const Posts = () => {

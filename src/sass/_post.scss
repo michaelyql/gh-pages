@@ -1,5 +1,11 @@
 @use "./variables" as *;
 
+.posts-container {
+  @media screen and (min-width: $device-md) {
+    min-width: 768px;
+  }
+}
+
 .post {
   width: 100%;
   @media screen and (max-width: $device-md) {

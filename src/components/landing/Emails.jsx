@@ -7,7 +7,15 @@ import {
   faKeyboard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { Button } from "react-bootstrap";
 import InboxFilledBlue from "../../assets/inbox-filled-blue.png";
 import InboxUnfilled from "../../assets/inbox-unfilled.png";
 import InfoFilled from "../../assets/info-filled-blue.png";
@@ -20,9 +28,49 @@ import UserFilled from "../../assets/user-filled-blue.png";
 import UserUnfilled from "../../assets/user-unfilled.png";
 import { LandingPageContext } from "./LandingPage";
 
+const EmailContext = createContext({});
+
 const Emails = () => {
   const { isToolbarOpen } = useContext(LandingPageContext);
   const emailElement = useRef(null);
+  const [isEmailDetailViewOpened, setIsEmailDetailViewOpened] = useState(false);
+  const [emailDetailViewIndex, setEmailDetailViewIndex] = useState(-1);
+
+  const emailSender = useMemo(() => {
+    return {
+      0: "Simply Compete Adminsdfsdfsd",
+      1: "ESGTech Admin",
+      2: "Taeseong Taekwondo",
+    };
+  }, []);
+  const emailTitle = useMemo(() => {
+    return {
+      0: "Membership Registered",
+      1: "Successful Application to ESGTech",
+      2: "Invoice NOV3590 has been generated",
+    };
+  }, []);
+  const emailDescription = useMemo(() => {
+    return {
+      0: "Login NOW!",
+      1: "Thank you and see you soon! On Thu, May 9, 2024 at 10:04AM ESGTech Admin",
+      2: "Invoice NOV3590 for Michael Yang has been generated",
+    };
+  }, []);
+  const emailDates = useMemo(() => {
+    return {
+      0: "Aug 1",
+      1: "Jul 1",
+      2: "Jun 2",
+    };
+  }, []);
+  const [readStatus, setReadStatus] = useState(
+    new Array(Object.keys(emailSender).length).fill(false)
+  );
+  const [starredStatus, setStarredStatus] = useState(
+    new Array(Object.keys(emailSender).length).fill(false)
+  );
+
   useEffect(() => {
     if (isToolbarOpen) {
       emailElement.current.classList.remove("margin-left");
@@ -32,12 +80,35 @@ const Emails = () => {
   }, [isToolbarOpen]);
 
   return (
-    <div className="emails" ref={emailElement}>
-      <TopToolbar />
-      <Tabs />
-      <EmailTable />
-      <div className="email-detail-view"></div>
-    </div>
+    <EmailContext.Provider
+      value={{
+        isEmailDetailViewOpened,
+        setIsEmailDetailViewOpened,
+        emailDetailViewIndex,
+        setEmailDetailViewIndex,
+        readStatus,
+        setReadStatus,
+        starredStatus,
+        setStarredStatus,
+        emailSender,
+        emailTitle,
+        emailDescription,
+        emailDates,
+      }}
+    >
+      <div className="emails" ref={emailElement}>
+        {!isEmailDetailViewOpened ? (
+          <>
+            <TopToolbar />
+            <Tabs />
+            <EmailTable />
+          </>
+        ) : (
+          <EmailDetailView />
+        )}
+        <div className="email-detail-view"></div>
+      </div>
+    </EmailContext.Provider>
   );
 };
 
@@ -77,16 +148,17 @@ const Tabs = () => {
     () => ["Primary", "Promotions", "Social", "Updates"],
     []
   );
-  const tabSubtitles = useMemo(
+  const tabSubtitles = useMemo(() => ["", "", "LinkedIn", "Notifications"], []);
+  const tabChips = useMemo(
     () => [
-      "",
-      "",
-      // "LinkedIn",
-      "",
-      "",
+      { text: "", bgColor: "" },
+      { text: "", bgColor: "" },
+      { text: "5 new", bgColor: "#1c73e8" },
+      { text: "1 new", bgColor: "#e37401" },
     ],
     []
   );
+
   const unfilledTabItemIcons = [
     <img src={InboxUnfilled} alt="inbox" />,
     <img src={TagUnfilled} alt="promotions" />,
@@ -99,6 +171,7 @@ const Tabs = () => {
     <img src={UserFilled} alt="socials" />,
     <img src={InfoFilled} alt="info" />,
   ];
+
   const [activeTab, setActiveTab] = useState(tabItems[0]);
 
   return (
@@ -113,7 +186,15 @@ const Tabs = () => {
           >
             {isActiveTab ? filledTabItemIcons[i] : unfilledTabItemIcons[i]}
             <div className="tab-text">
-              <span className="tab-title">{item}</span>
+              <span className="tab-title">
+                {item}
+                <div
+                  className="tab-chip"
+                  style={{ backgroundColor: tabChips[i].bgColor }}
+                >
+                  <span>{tabChips[i].text}</span>
+                </div>
+              </span>
               <span className="tab-subtitle">{tabSubtitles[i]}</span>
             </div>
           </div>
@@ -124,44 +205,26 @@ const Tabs = () => {
 };
 
 const EmailTable = () => {
-  const emailSender = useMemo(() => {
-    return {
-      0: "Simply Compete Adminsdfsdfsd",
-      1: "ESGTech Admin",
-      2: "Taeseong Taekwondo",
-    };
-  }, []);
-  const emailTitle = useMemo(() => {
-    return {
-      0: "Membership Registered",
-      1: "Successful Application to ESGTech",
-      2: "Invoice NOV3590 has been generated",
-    };
-  }, []);
-  const emailDescription = useMemo(() => {
-    return {
-      0: "Login NOW!",
-      1: "Thank you and see you soon! On Thu, May 9, 2024 at 10:04AM ESGTech Admin",
-      2: "Invoice NOV3590 for Michael Yang has been generated",
-    };
-  }, []);
-  const emailDates = useMemo(() => {
-    return {
-      0: "Aug 1",
-      1: "Jul 1",
-      2: "Jun 2",
-    };
-  }, []);
-  const [readStatus, setReadStatus] = useState(
-    new Array(Object.keys(emailSender).length).fill(false)
-  );
-  const [starredStatus, setStarredStatus] = useState(
-    new Array(Object.keys(emailSender).length).fill(false)
-  );
-  const updateReadStatus = (idx) => {
+  const {
+    setIsEmailDetailViewOpened,
+    emailSender,
+    emailTitle,
+    emailDescription,
+    emailDates,
+    readStatus,
+    setReadStatus,
+    starredStatus,
+    setStarredStatus,
+  } = useContext(EmailContext);
+
+  const handleEmailClick = (event, idx) => {
+    // Update read status
     const newStatus = readStatus;
     newStatus[idx] = true;
     setReadStatus([...newStatus]);
+
+    // Open email detail view
+    setIsEmailDetailViewOpened(true);
   };
   const updateStarredStatus = (idx) => {
     const newStarredStatus = starredStatus;
@@ -178,11 +241,11 @@ const EmailTable = () => {
             return (
               <tr
                 key={i}
-                onClick={() => updateReadStatus(i)}
+                onClick={(event) => handleEmailClick(event, i)}
                 className={`${isRead ? "read" : ""}`}
               >
                 <td>
-                  <input type="checkbox"></input>
+                  <input type="checkbox" className="checkbox"></input>
                 </td>
                 <td>
                   <div
@@ -216,6 +279,16 @@ const EmailTable = () => {
           })}
         </tbody>
       </table>
+    </div>
+  );
+};
+
+const EmailDetailView = () => {
+  const { setIsEmailDetailViewOpened } = useContext(EmailContext);
+  return (
+    <div className="email-detail-view">
+      detail view
+      <Button onClick={() => setIsEmailDetailViewOpened(false)}>back</Button>
     </div>
   );
 };

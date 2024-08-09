@@ -47,6 +47,14 @@ pre[class~="language-bash"]:after {
   content: "bash" !important;
 }
 
+pre[class~="language-kotlin"]:after {
+  content: "Kotlin" !important;
+}
+
+pre[class~="language-groovy"]:after {
+  content: "Groovy" !important;
+}
+
 // pre = follow md format, scrollbar
 // pre-wrap = wrap if it exceeds device width
 // nowrap = one single line

@@ -32,6 +32,7 @@ module.exports = override(
   addWebpackModuleRule({
     test: /\.scss$/,
     use: [
+      // use MiniCssExtractPlugin in dev, use style-loader when running build
       // MiniCssExtractPlugin.loader,
       "style-loader",
       "css-loader",

@@ -14,6 +14,9 @@ $active-tab-font-color: #0957d0;
   transition-duration: 0.15s;
   transition-property: background-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  @media screen and (max-width: $device-md) {
+    margin-left: 0 !important;
+  }
 }
 
 .top-toolbar {
@@ -97,8 +100,16 @@ $active-tab-font-color: #0957d0;
   display: flex;
   flex-direction: row;
   align-items: end;
+  @media screen and (max-width: $device-sm) {
+    flex-direction: column;
+    align-items: start;
+    & > * {
+      width: 100%;
+      flex: 0 1 auto !important;
+    }
+  }
   & > * {
-    width: 251px;
+    flex: 0 1 251px;
     position: relative;
     cursor: pointer;
     padding: 1rem;
@@ -140,6 +151,11 @@ $active-tab-font-color: #0957d0;
     }
     .tab-text {
       display: inline;
+      .tab-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
       .tab-subtitle {
         display: block;
         font-weight: 400;
@@ -147,17 +163,29 @@ $active-tab-font-color: #0957d0;
         color: #747474;
       }
     }
+    .tab-chip {
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      padding: 0 4px;
+      border-radius: 12px;
+      margin-left: 8px;
+      span {
+        text-wrap: nowrap;
+      }
+    }
   }
 }
 
 .email-table {
-  table,
-  tr {
+  table {
     width: 100%;
-    border: 1px solid #edeff1;
-    font-size: 0.875rem;
+    border-top: 1px solid #edeff1;
   }
   tr {
+    width: 100%;
+    border-bottom: 1px solid #edeff1;
+    font-size: 0.875rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -168,7 +196,7 @@ $active-tab-font-color: #0957d0;
       background-color: #f2f6fc;
     }
     &:hover {
-      box-shadow: 0 1px 1px 0.5px #b4b4b4;
+      box-shadow: 0 0px 1px 0.5px #b4b4b4;
       z-index: 10;
     }
   }
@@ -183,10 +211,12 @@ $active-tab-font-color: #0957d0;
     align-items: center;
     justify-content: center;
     margin: 0 12px 0 16px;
+    z-index: 11;
   }
   .email-sender {
     flex-basis: 168px;
     max-width: 168px;
+    min-width: 168px;
     padding-right: 32px;
     text-wrap: nowrap;
     text-overflow: ellipsis;
@@ -202,5 +232,11 @@ $active-tab-font-color: #0957d0;
         font-weight: 600;
       }
     }
+  }
+  .email-date {
+    min-width: 50px;
+    max-width: 50px;
+    display: flex;
+    align-items: flex-end;
   }
 }

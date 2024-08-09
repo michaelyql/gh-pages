@@ -6,7 +6,7 @@ $selected-bg: #d3e3fd;
 .side-toolbar {
   padding-right: 15px;
   position: relative;
-  @media screen and (max-width: $device-sm) {
+  @media screen and (max-width: $device-md) {
     display: none;
   }
   &:not(.open) {

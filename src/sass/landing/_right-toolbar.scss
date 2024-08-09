@@ -3,4 +3,7 @@
 .right-toolbar {
   height: 100%;
   width: 56px;
+  @media screen and (max-width: $device-md) {
+    display: none;
+  }
 }

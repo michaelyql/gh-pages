@@ -1,6 +1,11 @@
 @use "./variables" as *;
 
 .posts-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   @media screen and (min-width: $device-md) {
     min-width: 768px;
   }

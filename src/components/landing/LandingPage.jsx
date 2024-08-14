@@ -37,11 +37,12 @@ const LandingPage = (props) => {
   return (
     <LandingPageContext.Provider value={{ isToolbarOpen }}>
       <Snackbar
-        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         open={isSnackbarOpen}
         autoHideDuration={null}
         onClose={handleClose}
         action={closeSnackbar}
+        style={{ bottom: "48px" }}
       >
         <Alert severity="info" onClose={handleClose}>
           This page is still under development!

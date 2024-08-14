@@ -1,4 +1,6 @@
+import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import {
+  faArrowLeft,
   faArrowRotateRight,
   faCaretDown,
   faCaretLeft,
@@ -15,11 +17,13 @@ import {
   useRef,
   useState,
 } from "react";
-import { Button } from "react-bootstrap";
+import ArchiveUnfilled from "../../assets/archived-unfilled.png";
+import BlueAvatar from "../../assets/google-avatar.png";
 import InboxFilledBlue from "../../assets/inbox-filled-blue.png";
 import InboxUnfilled from "../../assets/inbox-unfilled.png";
 import InfoFilled from "../../assets/info-filled-blue.png";
 import InfoUnfilled from "../../assets/info-unfilled.png";
+import Spam from "../../assets/spam-unfilled.png";
 import StarFilledYellow from "../../assets/star-filled-yellow.png";
 import StarUnfilledDisabled from "../../assets/star-unfilled-disabled.png";
 import TagFilled from "../../assets/tag-filled.png";
@@ -38,9 +42,16 @@ const Emails = () => {
 
   const emailSender = useMemo(() => {
     return {
-      0: "Simply Compete Adminsdfsdfsd",
+      0: "Simply Compete Admin",
       1: "ESGTech Admin",
       2: "Taeseong Taekwondo",
+    };
+  }, []);
+  const fullEmail = useMemo(() => {
+    return {
+      0: "<info@simplycompete.co>",
+      1: "<admin@esgtech.co>",
+      2: "<taeseongtkd@gmail.com>",
     };
   }, []);
   const emailTitle = useMemo(() => {
@@ -94,6 +105,7 @@ const Emails = () => {
         emailTitle,
         emailDescription,
         emailDates,
+        fullEmail,
       }}
     >
       <div className="emails" ref={emailElement}>
@@ -106,7 +118,6 @@ const Emails = () => {
         ) : (
           <EmailDetailView />
         )}
-        <div className="email-detail-view"></div>
       </div>
     </EmailContext.Provider>
   );
@@ -148,11 +159,14 @@ const Tabs = () => {
     () => ["Primary", "Promotions", "Social", "Updates"],
     []
   );
-  const tabSubtitles = useMemo(() => ["", "", "LinkedIn", "Notifications"], []);
+  const tabSubtitles = useMemo(
+    () => ["", "Moomoo", "LinkedIn", "Notifications"],
+    []
+  );
   const tabChips = useMemo(
     () => [
       { text: "", bgColor: "" },
-      { text: "", bgColor: "" },
+      { text: "1 new", bgColor: "#178038" },
       { text: "5 new", bgColor: "#1c73e8" },
       { text: "1 new", bgColor: "#e37401" },
     ],
@@ -207,6 +221,7 @@ const Tabs = () => {
 const EmailTable = () => {
   const {
     setIsEmailDetailViewOpened,
+    setEmailDetailViewIndex,
     emailSender,
     emailTitle,
     emailDescription,
@@ -224,9 +239,11 @@ const EmailTable = () => {
     setReadStatus([...newStatus]);
 
     // Open email detail view
+    setEmailDetailViewIndex(idx);
     setIsEmailDetailViewOpened(true);
   };
-  const updateStarredStatus = (idx) => {
+  const updateStarredStatus = (event, idx) => {
+    event.stopPropagation();
     const newStarredStatus = starredStatus;
     newStarredStatus[idx] = !starredStatus[idx];
     setStarredStatus([...newStarredStatus]);
@@ -250,7 +267,7 @@ const EmailTable = () => {
                 <td>
                   <div
                     className="star-wrapper"
-                    onClick={() => updateStarredStatus(i)}
+                    onClick={(event) => updateStarredStatus(event, i)}
                   >
                     {isStarred ? (
                       <img src={StarFilledYellow} alt="starred" />
@@ -284,11 +301,55 @@ const EmailTable = () => {
 };
 
 const EmailDetailView = () => {
-  const { setIsEmailDetailViewOpened } = useContext(EmailContext);
+  const {
+    setIsEmailDetailViewOpened,
+    emailDetailViewIndex: idx,
+    emailSender,
+    emailTitle,
+    emailDescription,
+    emailDates,
+    fullEmail,
+  } = useContext(EmailContext);
   return (
     <div className="email-detail-view">
-      detail view
-      <Button onClick={() => setIsEmailDetailViewOpened(false)}>back</Button>
+      <div className="email-detail-toolbar top-toolbar">
+        <div className="left-icons">
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            className="fa-fw circle me-3"
+            onClick={() => setIsEmailDetailViewOpened(false)}
+          />
+          <div className="icon-wrapper circle">
+            <img src={ArchiveUnfilled} alt="archive" className="archive" />
+          </div>
+          <div className="icon-wrapper circle">
+            <img src={Spam} alt="spam" className="spam" />
+          </div>
+          <FontAwesomeIcon icon={faTrashCan} className="fa-fw circle trash" />
+        </div>
+        <div className="right-icons">right icons</div>
+      </div>
+      <div className="content-wrapper">
+        <div className="email-detail-title">{emailTitle[idx]}</div>
+        <div className="email-detail-content">
+          <div className="sender-avatar">
+            <img src={BlueAvatar} alt="avatar" />
+          </div>
+          <div className="detail-main">
+            <div className="email-detail-header">
+              <div className="sender-name">{emailSender[idx]}</div>
+              <div className="sender-full-email">{fullEmail[idx]}</div>
+              <div className="email-detail-date">{emailDates[idx]}</div>
+            </div>
+
+            <div className="email-detail-desc">{emailDescription[idx]}</div>
+            <div className="email-actions">
+              <div className="reply-btn">Reply</div>
+              <div className="forward-btn">Forward</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

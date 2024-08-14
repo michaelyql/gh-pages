@@ -3,6 +3,7 @@
 @use "./side-toolbar";
 @use "./emails";
 @use "./right-toolbar";
+@use "./email-detail";
 
 $landing-bg: #f6f8fc;
 
@@ -19,6 +20,7 @@ $landing-bg: #f6f8fc;
   flex-direction: row;
   flex-grow: 1;
   width: 100%;
+  max-height: calc(100% - 62px);
 }
 
 .mobile-menu {

@@ -56,9 +56,7 @@ const Posts = () => {
   return (
     <>
       <CustomBreadcrumbs />
-      <div
-        className={`posts-container d-flex flex-wrap flex-md-row flex-sm-column align-items-center justify-content-center`}
-      >
+      <div className={`posts-container`}>
         {posts
           .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
           .map((post, idx) => {

@@ -1,6 +1,6 @@
 @use "../variables" as *;
 
-$emails-icon-hover-color: #f2f2f2;
+$emails-icon-hover-color: hsl(0, 0%, 95%);
 $emails-icon-color: #454746;
 $active-tab-font-color: #0957d0;
 
@@ -24,7 +24,7 @@ $active-tab-font-color: #0957d0;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 1rem 0;
+  padding: 6px 0.7rem 0;
   @media screen and (max-width: $device-sm) {
     display: none;
   }
@@ -237,6 +237,8 @@ $active-tab-font-color: #0957d0;
     min-width: 50px;
     max-width: 50px;
     display: flex;
-    align-items: flex-end;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
   }
 }

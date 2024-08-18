@@ -22,6 +22,8 @@ const categoryMapping = {
   postgres: "Backend/Database",
   git: "Source Control",
   react: "Frameworks",
+  notes: "Notes",
+  sass: "Frontend",
 };
 
 const Posts = () => {

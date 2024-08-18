@@ -1,18 +1,22 @@
 {
   "files": {
-    "main.css": "/gh-pages/static/css/main.432c0489.css",
+    "main.css": "/gh-pages/static/css/main.8f82e64a.css",
     "main.js": "/gh-pages/static/js/bundle.js",
     "static/js/chunk.js": "/gh-pages/static/js/chunk.js",
     "images/src/assets/intellij.png": "/gh-pages/images/src/assets/intellij.png",
     "images/src/assets/postgres.png": "/gh-pages/images/src/assets/postgres.png",
     "images/src/assets/java.png": "/gh-pages/images/src/assets/java.png",
+    "images/src/assets/sass.png": "/gh-pages/images/src/assets/sass.png",
     "images/src/assets/react.png": "/gh-pages/images/src/assets/react.png",
     "images/src/assets/spring.png": "/gh-pages/images/src/assets/spring.png",
     "images/src/assets/data-structure.png": "/gh-pages/images/src/assets/data-structure.png",
     "images/src/assets/github-logo.png": "/gh-pages/images/src/assets/github-logo.png",
     "index.html": "/gh-pages/index.html",
+    "images/src/assets/google-avatar.png": "/gh-pages/images/src/assets/google-avatar.png",
+    "images/src/assets/notes.png": "/gh-pages/images/src/assets/notes.png",
     "images/src/assets/pen.png": "/gh-pages/images/src/assets/pen.png",
     "images/src/assets/star-unfilled-disabled.png": "/gh-pages/images/src/assets/star-unfilled-disabled.png",
+    "images/src/assets/spam-unfilled.png": "/gh-pages/images/src/assets/spam-unfilled.png",
     "images/src/assets/info-unfilled.png": "/gh-pages/images/src/assets/info-unfilled.png",
     "images/src/assets/codeforces.svg": "/gh-pages/images/src/assets/codeforces.svg",
     "images/src/assets/inbox-filled-blue.png": "/gh-pages/images/src/assets/inbox-filled-blue.png",
@@ -20,6 +24,7 @@
     "images/src/assets/inbox-unfilled.png": "/gh-pages/images/src/assets/inbox-unfilled.png",
     "images/src/assets/tag-filled.png": "/gh-pages/images/src/assets/tag-filled.png",
     "images/src/assets/star-unfilled.png": "/gh-pages/images/src/assets/star-unfilled.png",
+    "images/src/assets/archived-unfilled.png": "/gh-pages/images/src/assets/archived-unfilled.png",
     "images/src/assets/clock-unfilled.png": "/gh-pages/images/src/assets/clock-unfilled.png",
     "images/src/assets/inbox-filled-black.png": "/gh-pages/images/src/assets/inbox-filled-black.png",
     "images/src/assets/star-filled.png": "/gh-pages/images/src/assets/star-filled.png",
@@ -32,12 +37,12 @@
     "images/src/assets/sent-filled.png": "/gh-pages/images/src/assets/sent-filled.png",
     "styles.css.map": "/gh-pages/static/css/styles.css.map",
     "bundle.js.map": "/gh-pages/static/js/bundle.js.map",
-    "main.432c0489.css.map": "/gh-pages/static/css/main.432c0489.css.map",
+    "main.8f82e64a.css.map": "/gh-pages/static/css/main.8f82e64a.css.map",
     "chunk.js.map": "/gh-pages/static/js/chunk.js.map"
   },
   "entrypoints": [
     "static/css/styles.css",
     "static/js/bundle.js",
-    "static/css/main.432c0489.css"
+    "static/css/main.8f82e64a.css"
   ]
 }

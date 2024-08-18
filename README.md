@@ -7,7 +7,7 @@
 - [ ] Set up Github pages push pipeline
 - [ ] Landing page design
 - [ ] Create lottie lab svg animations to use in landing page
-- [ ] Custom cursor img
+- [ ] ~Custom cursor img~
 - [ ] Explore using google sheets api to store and pull data
 - [ ] Microinteractions with icons
 - [ ] Sorting/filtering/search of post by tags
@@ -15,6 +15,8 @@
 - [ ] Add expand/close code option for each code block
 - [ ] Add link to icons8 for citation
 - [ ] Design derp dragon logo
+- [ ] Add box shadow on scroll for email detail view
+- [ ] Math LaTeX support
 
 ## Landing Page
 

@@ -10,6 +10,7 @@ import "prismjs/components/prism-java";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-kotlin";
 import "prismjs/components/prism-python";
+import "prismjs/components/prism-sass";
 import "prismjs/themes/prism-okaidia.css";
 import { createContext } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";

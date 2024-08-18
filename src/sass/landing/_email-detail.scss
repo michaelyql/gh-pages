@@ -96,6 +96,67 @@
           color: #5e5e5e;
         }
       }
+      .email-to {
+        font-size: 12px;
+        font-weight: 400;
+        color: #5e5e5e;
+        line-height: 20px;
+        letter-spacing: normal;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .caret-down {
+          cursor: pointer;
+          padding: 3px 1px;
+          border-radius: 4px;
+          margin-left: 2px;
+          &:hover {
+            background-color: emails.$emails-icon-hover-color;
+          }
+        }
+      }
+      .email-detail-body {
+        font-size: 13px;
+        font-family: Arial, Helvetica, sans-serif;
+        padding-bottom: 20px;
+        margin-top: 8px;
+      }
+      .email-actions {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: row;
+        .reply-btn,
+        .forward-btn {
+          border: 1px solid #747775;
+          border-radius: 18px;
+          font-size: 0.875rem;
+          color: #444746;
+          height: 36px;
+          font-weight: 500;
+          padding: 0 16px;
+          min-width: 104px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          &:hover {
+            background-color: rgb(32, 33, 36, 0.06);
+            cursor: pointer;
+          }
+        }
+        .reply-btn {
+          margin-right: 8px;
+          .reply {
+            rotate: -90deg;
+            margin-right: 8px;
+          }
+        }
+        .forward-btn {
+          .forward {
+            rotate: -90deg;
+            margin-right: 8px;
+          }
+        }
+      }
     }
   }
 }

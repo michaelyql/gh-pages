@@ -2,6 +2,8 @@ import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowLeft,
   faArrowRotateRight,
+  faArrowTurnDown,
+  faArrowTurnUp,
   faCaretDown,
   faCaretLeft,
   faCaretRight,
@@ -70,9 +72,21 @@ const Emails = () => {
   }, []);
   const emailDates = useMemo(() => {
     return {
-      0: "Aug 1",
-      1: "Jul 1",
-      2: "Jun 2",
+      0: {
+        trunc: "Aug 1",
+        full: "Thu, Aug 1, 9:24pm",
+        date: Date.UTC(2024, 7, 1, 21, 24),
+      },
+      1: {
+        trunc: "Jul 1",
+        full: "Mon, Jul 1, 6:00am",
+        date: Date.UTC(2024, 6, 1, 6),
+      },
+      2: {
+        trunc: "Jun 2",
+        full: "Sun, Jun 2, 5:53pm",
+        date: Date.UTC(2024, 5, 2, 17, 53),
+      },
     };
   }, []);
   const [readStatus, setReadStatus] = useState(
@@ -289,7 +303,7 @@ const EmailTable = () => {
                   </span>
                 </td>
                 <td className={`email-date ${isRead ? "read" : ""}`}>
-                  {emailDates[i]}
+                  {emailDates[i].trunc}
                 </td>
               </tr>
             );
@@ -310,6 +324,12 @@ const EmailDetailView = () => {
     emailDates,
     fullEmail,
   } = useContext(EmailContext);
+  function timeElapsedFrom(prevTime) {
+    const currDate = new Date();
+    const dt = currDate.getTime() - prevTime;
+    const daysPassed = Math.floor(dt / (1000 * 60 * 60 * 24));
+    return daysPassed <= 30 ? `(${daysPassed} days ago)` : "";
+  }
   return (
     <div className="email-detail-view">
       <div className="email-detail-toolbar top-toolbar">
@@ -339,13 +359,32 @@ const EmailDetailView = () => {
             <div className="email-detail-header">
               <div className="sender-name">{emailSender[idx]}</div>
               <div className="sender-full-email">{fullEmail[idx]}</div>
-              <div className="email-detail-date">{emailDates[idx]}</div>
+              <div className="email-detail-date">
+                {emailDates[idx].full} {timeElapsedFrom(emailDates[idx].date)}
+              </div>
             </div>
-
-            <div className="email-detail-desc">{emailDescription[idx]}</div>
+            <div className="email-to">
+              to{" "}
+              {
+                <FontAwesomeIcon
+                  icon={faCaretDown}
+                  className="fa-fw caret-down"
+                />
+              }
+            </div>
+            <div className="email-detail-body">{emailDescription[idx]}</div>
             <div className="email-actions">
-              <div className="reply-btn">Reply</div>
-              <div className="forward-btn">Forward</div>
+              <div className="reply-btn">
+                <FontAwesomeIcon icon={faArrowTurnUp} className="fa-fw reply" />
+                Reply
+              </div>
+              <div className="forward-btn">
+                <FontAwesomeIcon
+                  icon={faArrowTurnDown}
+                  className="fa-fw forward"
+                />
+                Forward
+              </div>
             </div>
           </div>
         </div>
